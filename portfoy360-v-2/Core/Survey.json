@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "text": "Yatırım yaparken öncelikli hedefiniz nedir?",
+      "answers": [
+        {"text": "Anaparamı korumak", "score": 1},
+        {"text": "Enflasyona karşı korunmak", "score": 2},
+        {"text": "Düzenli gelir elde etmek", "score": 3},
+        {"text": "Yüksek getiri sağlamak", "score": 4}
+      ]
+    },
+    {
+      "id": 2,
+      "text": "Bir yatırımınızın değerinin bir yıl içinde %20 düşmesi durumunda ne yaparsınız?",
+      "answers": [
+        {"text": "Hemen satarım", "score": 1},
+        {"text": "Bir kısmını satarım", "score": 2},
+        {"text": "Beklerim", "score": 3},
+        {"text": "Daha fazla alım yaparım", "score": 4}
+      ]
+    },
+    {
+      "id": 3,
+      "text": "Yatırım bilginizi nasıl tanımlarsınız?",
+      "answers": [
+        {"text": "Hiç yok", "score": 1},
+        {"text": "Başlangıç seviyesi", "score": 2},
+        {"text": "Orta seviye", "score": 3},
+        {"text": "İleri seviye", "score": 4}
+      ]
+    }
+  ]
+}

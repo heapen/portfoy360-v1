@@ -1,0 +1,10 @@
+Ben Swift ile bir mobil uygulama geliştirmek istiyorum. 
+-Uygulamanın mimarisi MVVM olsun oldukça profesyonel bir şekilde ilerlensin kodlarda sanki bir şirket yazıyormuş gibi. 
+-Uygulamanın tasarımı modern, şık, kullanıcı dostu ve kullanıcıya premium hissettiren tarzda olsun. Uygulama bir yatırım uygulaması olduğu için tasarım renklerini ve tasarımı ona göre belirle.
+-Uygulamayı yükleyen kişi öncelikle giriş yap ekranı ile karşılaşacak hesabı yok ise kayıt ol ekranına yönlendirilecek. Bu ekranda da tasarım bütünlüğü ve modernlik olmalı.
+-Kayıt olup giriş yapan kullanıcı bir anket ile karşılaşacak bu ankete göre kullanıcının yatırımlarında risk alma durumu hesaplanacak, örnek veriyorum temkinli yatırımcı, orta risk alan yatırımcı ve girişimci yatırımcı gibi. Anket sorularını özenle hazırla gerekirse tüm webi tara kullanıcı anketi çözerken özel hissetsin. Anket sorularını kolayca değiştirmek için json dosyasının içerisinde tutabilirsin.
+-Anketi çözdükten sonra ana ekran gelecek. Ana ekranda güncel portföy sonrasında anket sonucuna göre önerilen portföyler yatırımlar olabilir onun aşağısında da güncel yatırım haberleri. Olabilir. Tasarımı modern kullanıcı dostu ve premium hissettirecek şeklinde yapmayı  unutma. 
+-Uygulamanın Özellikleri Ankete göre yatırım portföy önerilerinde bulunması, simülasyon ile kullanıcı 2022 yılında örnek olarak altına ya da seçtiği fona, hisseye 100.000TL yatırsaydı şu anda ne kadar parası olacaktı şeklinde görebilecek. 
+-Yatırım haberleri olacak.
+-Dünya da kabul görmüş efsanevi 10 yatırımcının yatırım özelliklerine göre yatırım tavsiyesi alabilecek. En efsanevi 10 yatırımcı şeklinde bir sekme olacak gibi oradan yatırımcıyı seçebilecek özelliklerini görecek. Ve önerilerde bulunacak uygulama ona göre. 
+-Kullanıcının finansal bilgisini arttırmaya yönelik ufak bilgilerin quialerin yer aldığı bir sekme de olabilir.
