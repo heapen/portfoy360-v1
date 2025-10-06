@@ -1,73 +1,83 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @Binding var isAuthenticated: Bool
     @State private var name = ""
-    @State private var surname = ""
     @State private var email = ""
     @State private var password = ""
-    @State private var isRegistered = false
+    @State private var confirmPassword = ""
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Kayıt Ol")
+        ZStack {
+            Color(AppColors.background).edgesIgnoringSafeArea(.all)
+
+            VStack(spacing: 20) {
+                Spacer()
+
+                Text("Hesap Oluştur")
                     .font(AppFonts.title)
-                    .foregroundColor(AppColors.primaryText)
+                    .foregroundColor(Color(AppColors.primaryText))
 
-                TextField("Ad", text: $name)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                VStack(spacing: 15) {
+                    TextField("", text: $name)
+                        .modifier(PlaceholderStyle(showPlaceHolder: name.isEmpty, placeholder: "Ad Soyad"))
+                        .padding(12)
+                        .background(Color(AppColors.secondaryBackground))
+                        .cornerRadius(10)
 
-                TextField("Soyad", text: $surname)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                    TextField("", text: $email)
+                        .modifier(PlaceholderStyle(showPlaceHolder: email.isEmpty, placeholder: "E-posta"))
+                        .padding(12)
+                        .background(Color(AppColors.secondaryBackground))
+                        .cornerRadius(10)
+                        .autocapitalization(.none)
+                        .keyboardType(.emailAddress)
 
-                TextField("E-posta", text: $email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                    SecureField("", text: $password)
+                        .modifier(PlaceholderStyle(showPlaceHolder: password.isEmpty, placeholder: "Şifre"))
+                        .padding(12)
+                        .background(Color(AppColors.secondaryBackground))
+                        .cornerRadius(10)
 
-                SecureField("Şifre", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-
-                NavigationLink(destination: SurveyView(), isActive: $isRegistered) {
-                    EmptyView()
-                }
-
-                Button(action: {
-                    // Kayıt olma işlemi
-                    self.isRegistered = true
-                }) {
-                    Text("Kayıt Ol")
-                        .font(AppFonts.button)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(AppColors.accent)
+                    SecureField("", text: $confirmPassword)
+                        .modifier(PlaceholderStyle(showPlaceHolder: confirmPassword.isEmpty, placeholder: "Şifre Tekrar"))
+                        .padding(12)
+                        .background(Color(AppColors.secondaryBackground))
                         .cornerRadius(10)
                 }
-                .padding()
+                .padding(.horizontal)
 
                 Button(action: {
-                    // Giriş yap ekranına geri dön
+                    // Kayıt işlemleri burada yapılacak
+                    isAuthenticated = true
                 }) {
-                    Text("Zaten hesabın var mı? Giriş yap")
-                        .font(AppFonts.body)
-                        .foregroundColor(AppColors.accent)
+                    Text("Kayıt Ol")
                 }
+                .buttonStyle(PrimaryButtonStyle())
+                .padding(.horizontal)
 
                 Spacer()
+
+                HStack {
+                    Text("Zaten bir hesabın var mı?")
+                        .foregroundColor(Color(AppColors.secondaryText))
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Giriş Yap")
+                            .foregroundColor(Color.accentColor)
+                    }
+                }
+                .padding(.bottom)
             }
-            .padding()
-            .background(AppColors.background)
-            .edgesIgnoringSafeArea(.all)
-            .navigationBarHidden(true)
         }
+        .navigationBarHidden(true)
     }
 }
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        RegisterView(isAuthenticated: .constant(false))
     }
 }

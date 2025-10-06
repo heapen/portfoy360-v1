@@ -11,7 +11,7 @@ import SwiftUI
 struct portfoy360_v_2App: App {
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            ContentView()
         }
     }
 }

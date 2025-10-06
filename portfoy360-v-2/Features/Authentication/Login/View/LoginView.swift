@@ -1,53 +1,72 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Binding var isAuthenticated: Bool
     @State private var email = ""
     @State private var password = ""
 
     var body: some View {
-        VStack {
-            Text("Giriş Yap")
-                .font(AppFonts.title)
-                .foregroundColor(AppColors.primaryText)
+        NavigationView {
+            ZStack {
+                Color(AppColors.background).edgesIgnoringSafeArea(.all)
 
-            TextField("E-posta", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                VStack(spacing: 20) {
+                    Spacer()
 
-            SecureField("Şifre", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                    Image(systemName: "chart.pie.fill")
+                        .font(.system(size: 80))
+                        .foregroundColor(Color(AppColors.primaryText))
 
-            Button(action: {
-                // Giriş yapma işlemi
-            }) {
-                Text("Giriş Yap")
-                    .font(AppFonts.button)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(AppColors.accent)
-                    .cornerRadius(10)
+                    Text("Portfoy360")
+                        .font(AppFonts.title)
+                        .foregroundColor(Color(AppColors.primaryText))
+
+                    VStack(spacing: 15) {
+                        TextField("", text: $email)
+                            .modifier(PlaceholderStyle(showPlaceHolder: email.isEmpty, placeholder: "E-posta"))
+                            .padding(12)
+                            .background(Color(AppColors.secondaryBackground))
+                            .cornerRadius(10)
+                            .autocapitalization(.none)
+                            .keyboardType(.emailAddress)
+
+                        SecureField("", text: $password)
+                            .modifier(PlaceholderStyle(showPlaceHolder: password.isEmpty, placeholder: "Şifre"))
+                            .padding(12)
+                            .background(Color(AppColors.secondaryBackground))
+                            .cornerRadius(10)
+                    }
+                    .padding(.horizontal)
+
+                    Button(action: {
+                        // Giriş işlemleri burada yapılacak
+                        isAuthenticated = true
+                    }) {
+                        Text("Giriş Yap")
+                    }
+                    .buttonStyle(PrimaryButtonStyle())
+                    .padding(.horizontal)
+
+                    Spacer()
+
+                    HStack {
+                        Text("Hesabın yok mu?")
+                            .foregroundColor(Color(AppColors.secondaryText))
+                        NavigationLink(destination: RegisterView(isAuthenticated: $isAuthenticated)) {
+                            Text("Kayıt Ol")
+                                .foregroundColor(Color.accentColor)
+                        }
+                    }
+                    .padding(.bottom)
+                }
             }
-            .padding()
-
-            NavigationLink(destination: RegisterView()) {
-                Text("Hesabın yok mu? Kayıt ol")
-                    .font(AppFonts.body)
-                    .foregroundColor(AppColors.accent)
-            }
-
-            Spacer()
+            .navigationBarHidden(true)
         }
-        .padding()
-        .background(AppColors.background)
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarHidden(true)
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(isAuthenticated: .constant(false))
     }
 }

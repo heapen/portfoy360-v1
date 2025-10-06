@@ -1,9 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isAuthenticated = false
+
     var body: some View {
-        NavigationView {
-            LoginView()
+        if isAuthenticated {
+            MainTabView()
+        } else {
+            LoginView(isAuthenticated: $isAuthenticated)
         }
     }
 }
